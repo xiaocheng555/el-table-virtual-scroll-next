@@ -8,8 +8,10 @@
       </el-select>
       &nbsp;
       <el-input style="width: 300px;" type="number" placeholder="滚动到第几行" v-model="jumpIndex">
+        <template #append>
+          <el-button @click="scrollToRow(jumpIndex)">滚动{{jumpIndex}}</el-button>
+        </template>
       </el-input>
-      <el-button @click="scrollToRow(jumpIndex)">滚动{{jumpIndex}}</el-button>
       &nbsp;
       数据总数量：<el-input style="width: 200px;" type="number" placeholder="数据条数" v-model="count"></el-input>
     </div>
@@ -57,8 +59,8 @@
 </template>
 
 <script>
-import VirtualScroll from 'el-table-virtual-scroll'
-// import { VirtualColumn } from 'el-table-virtual-scroll'
+import VirtualScroll from 'el-table-virtual-scroll-next'
+// import { VirtualColumn } from 'el-table-virtual-scroll-next'
 import { mockData } from '@/utils'
 
 export default {

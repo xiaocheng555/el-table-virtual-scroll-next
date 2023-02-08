@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import VirtualScroll from 'el-table-virtual-scroll'
+import VirtualScroll from 'el-table-virtual-scroll-next'
 import ElTableInfiniteScroll from 'el-table-infinite-scroll'
 
 export default {

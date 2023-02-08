@@ -4,7 +4,7 @@ import { terser } from 'rollup-plugin-terser'
 const config = Object.assign({}, base, {
   output: {
     format: 'iife',
-    file: './dist/el-table-virtual-scroll.min.js',
+    file: './dist/el-table-virtual-scroll-next.min.js',
     name: 'ElTableVirtualScroll',
     sourcemap: false
   }

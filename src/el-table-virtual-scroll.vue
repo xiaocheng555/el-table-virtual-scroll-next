@@ -51,7 +51,7 @@ function scrollToY (el, y) {
 }
 
 // 表格body class名称
-const TableBodyClassNames = ['.el-table__body-wrapper .el-scrollbar__view', '.el-table__fixed .el-table__fixed-body-wrapper', '.el-table__fixed-right .el-table__fixed-body-wrapper']
+const TableBodyClassNames = ['.el-table__body-wrapper .el-scrollbar__view']
 
 let checkOrder = 0 // 多选：记录多选选项改变的顺序
 

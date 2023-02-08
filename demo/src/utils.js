@@ -1,4 +1,4 @@
-export function mockData (start: number, end: number) {
+export function mockData (start, end) {
   const list = []
   for (let i = start; i < end; i++) {
     const text = getContent()
@@ -26,7 +26,7 @@ export function mockData (start: number, end: number) {
   return list
 }
 
-function genRandomVal (min: number, max: number) {
+function genRandomVal (min, max) {
   return Math.floor(Math.random() * (max - min)) + min
 }
 

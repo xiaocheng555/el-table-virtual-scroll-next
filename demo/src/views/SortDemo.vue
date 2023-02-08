@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import VirtualScroll from 'el-table-virtual-scroll'
+import VirtualScroll from 'el-table-virtual-scroll-next'
 import { mockData } from '@/utils'
 
 export default {
