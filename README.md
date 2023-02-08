@@ -4,7 +4,7 @@
 
 ⚠️优先考虑使用 Element-Plus 表格虚拟滚动组件 `<el-table-v2>`
 
-⚠️仅支持vue3。vue2 请使用：https://github.com/xiaocheng555/el-table-virtual-scroll
+⚠️仅支持 Vue3。（Vue2版本 [点这里](https://github.com/xiaocheng555/el-table-virtual-scroll)）
 
 demo & 源码：https://xiaocheng555.github.io/el-table-virtual-scroll-next/
 
