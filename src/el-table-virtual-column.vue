@@ -63,19 +63,19 @@
 </template>
 
 <script>
-import {
-  ElTableColumn,
-  ElCheckbox,
-  ElRadio
-} from 'element-plus'
+// import {
+//   ElTableColumn,
+//   ElCheckbox,
+//   ElRadio
+// } from 'element-plus'
 
 export default {
   inheritAttrs: false,
   name: 'el-table-virtual-column',
   components: {
-    ElTableColumn,
-    ElCheckbox,
-    ElRadio
+    // ElTableColumn,
+    // ElCheckbox,
+    // ElRadio
   },
   inject: ['virtualScroll'],
   props: {

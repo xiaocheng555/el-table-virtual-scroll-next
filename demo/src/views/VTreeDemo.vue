@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import VirtualScroll from 'el-table-virtual-scroll'
-import { VirtualColumn } from 'el-table-virtual-scroll'
+import VirtualScroll from 'el-table-virtual-scroll-next'
+import { VirtualColumn } from 'el-table-virtual-scroll-next'
 
 export default {
   components: {

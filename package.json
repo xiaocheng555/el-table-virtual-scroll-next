@@ -1,10 +1,10 @@
 {
-  "name": "el-table-virtual-scroll",
-  "version": "1.0.8",
-  "description": "The virtual scrolling component developed based on the Table component of Element-UI supports dynamic height and solves the problem of scrolling stuck when the amount of data is large.",
-  "main": "dist/el-table-virtual-scroll.umd.js",
-  "module": "dist/el-table-virtual-scroll.es.js",
-  "unpkg": "dist/el-table-virtual-scroll.min.js",
+  "name": "el-table-virtual-scroll-next",
+  "version": "1.0.0",
+  "description": "The virtual scrolling component developed based on the Table component of Element-Plus supports dynamic height and solves the problem of scrolling stuck when the amount of data is large.",
+  "main": "dist/el-table-virtual-scroll-next.umd.js",
+  "module": "dist/el-table-virtual-scroll-next.es.js",
+  "unpkg": "dist/el-table-virtual-scroll-next.min.js",
   "scripts": {
     "build:umd": "rollup --config ./build/rollup.config.umd.js",
     "build:browser": "rollup --config ./build/rollup.config.browser.js",
@@ -12,18 +12,18 @@
     "build": "npm run build:umd && npm run build:browser && npm run build:es"
   },
   "keywords": [
-    "vue",
-    "el-table-virtual-scroll",
+    "vue3",
+    "el-table-virtual-scroll-next",
     "virtual",
     "scroll",
     "el-table",
-    "ElementUI"
+    "ElementPlus"
   ],
   "author": "xiaocheng555",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xiaocheng555/el-table-virtual-scroll.git"
+    "url": "git+https://github.com/xiaocheng555/el-table-virtual-scroll-next.git"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -49,7 +49,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "peerDependencies": {
-    "element-ui": "^2.13.0"
+    "element-plus": "^2.2.29"
   },
   "dependencies": {
     "throttle": "^1.0.3"

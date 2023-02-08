@@ -3,20 +3,16 @@
     <layout>
       <router-view></router-view>
     </layout>
-    <!-- <Preview class="code-preview"></Preview> -->
   </div>
 </template>
 
 <script>
-import { defineAsyncComponent } from 'vue'
 import Layout from './Layout.vue'
-const Preview = defineAsyncComponent(() => import('./Preview/index.vue'))
 
 export default {
   name: 'App',
   components: {
-    Layout,
-    Preview
+    Layout
   }
 }
 </script>
@@ -37,5 +33,9 @@ html, body {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+}
+.el-table__cell {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
 }
 </style>

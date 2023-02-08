@@ -3,7 +3,7 @@ import base from './rollup.config.base'
 const config = Object.assign({}, base, {
   output: {
     format: 'umd',
-    file: './dist/el-table-virtual-scroll.umd.js',
+    file: './dist/el-table-virtual-scroll-next.umd.js',
     name: 'el-table-virtual-scroll',
     sourcemap: false
   }

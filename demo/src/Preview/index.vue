@@ -28,7 +28,7 @@ export default {
   name: 'code-preview',
   data () {
     return {
-      demoCodes: global.demoFiles,
+      demoCodes: window.demoFiles,
       preview: false,
       isDraging: false,
       curDemoCode: null,
