@@ -1,7 +1,7 @@
 <template>
   <div
     class="el-table-virtual-scroll"
-    :class="[isHideAppend ? 'hide-append' : '']">
+    :class="[isHideAppend ? 'hide-append' : '', stopAmin ? 'no-row-amin' : '']">
     <slot></slot>
   </div>
 </template>
@@ -112,7 +112,8 @@ export default {
       curRow: null, // 表格单选：选中的行
       isExpanding: false, // 列是否正在展开
       columnVms: [], // virtual-column 组件实例
-      isHideAppend: false
+      isHideAppend: false,
+      stopAmin: false // 是否停止row过渡动画
     }
   },
   computed: {
@@ -131,10 +132,6 @@ export default {
         total += size
       }
       return res
-    },
-    watchData () {
-      console.log('data change')
-      return this.data
     }
   },
   methods: {
@@ -197,6 +194,11 @@ export default {
 
     // 处理滚动事件
     handleScroll (shouldUpdate = true) {
+      this.stopAmin = true
+      this.$nextTick(() => {
+        this.stopAmin = false
+      })
+
       // 如果组件失活，则不再执行handleScroll；否则外部容器滚动情况下记录的scrollTop会是0
       if (this.isDeactivated) return
       // 记录scrollPos
@@ -205,7 +207,6 @@ export default {
 
       if (!this.virtualized) return
 
-      this.removeHoverRows()
       // 更新当前尺寸（高度）
       this.updateSizes()
       // 计算renderData
@@ -215,16 +216,6 @@ export default {
       shouldUpdate && this.updatePosition()
       // 触发事件
       this.$emit('change', this.renderData, this.start, this.end)
-    },
-
-    // 移除多个hover-row
-    removeHoverRows () {
-      const hoverRows = this.$el.querySelectorAll('.el-table__row.hover-row')
-      if (hoverRows.length > 1) {
-        Array.from(hoverRows).forEach((row) => {
-          row.classList.remove('hover-row')
-        })
-      }
     },
 
     // 更新尺寸（高度）
@@ -590,6 +581,12 @@ export default {
 .hide-append {
   :deep(.el-table__append-wrapper) {
     display: none;
+  }
+}
+
+.no-row-amin {
+  :deep(.hover-row td.el-table__cell) {
+    background: inherit !important;
   }
 }
 </style>
