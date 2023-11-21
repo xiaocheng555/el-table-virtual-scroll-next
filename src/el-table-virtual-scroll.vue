@@ -50,6 +50,11 @@ function scrollToY (el, y) {
   }
 }
 
+// 是否为空 undefine or null
+function isEmpty (val) {
+  return typeof val === 'undefined' || val === null
+}
+
 // 表格body class名称
 const TableBodyClassNames = ['.el-table__body-wrapper .el-scrollbar__view']
 
@@ -97,6 +102,10 @@ export default {
     virtualized: {
       type: Boolean,
       default: true
+    },
+    // 表格行合并时，合并在一起的行返回相同的key值
+    rowSpanKey: {
+      type: Function
     }
   },
   provide () {
@@ -322,9 +331,12 @@ export default {
         }
       }
 
-      // 开始索引始终保持偶数，如果为奇数，则加1使其保持偶数【确保表格行的偶数数一致，不会导致斑马纹乱序显示】
-      if (start % 2) {
-        start = start - 1
+      if (this.isRowSpan()) {
+        // 计算包含合并行的开始结束区间（⚠️注意：合并行不支持使用斑马纹，因为不能100%确定合并行的开始行是偶数，可能会向上找一直到第一行，导致渲染非常多行，浪费性能）
+        [start, end] = this.calcRenderSpanData(start, end)
+      } else {
+        // 开始索引始终保持偶数，如果为奇数，则加1使其保持偶数【确保表格行的偶数数一致，不会导致斑马纹乱序显示】
+        if (start % 2) start = start - 1
       }
 
       this.top = top
@@ -332,6 +344,53 @@ export default {
       this.start = start
       this.end = end
       this.renderData = data.slice(start, end + 1)
+    },
+
+    // 如果存在合并行的情况，渲染的数据范围扩大到包含合并行
+    calcRenderSpanData (start, end) {
+      // 从开始节点向上查找是否有合并行
+      let prevKey
+      while (start > 0) {
+        const curRow = this.data[start]
+        const curkey = this.rowSpanKey(curRow, start)
+        // 如果不存在key，说明当前行不属于合并行
+        if (isEmpty(curkey)) break
+
+        // 如果当前行与后面一行的key不相同，说明则当前行不属于合并行，从后一行开始截断
+        if (!isEmpty(prevKey) && prevKey !== curkey) {
+          start++
+          break
+        }
+
+        prevKey = curkey
+        start--
+      }
+
+      // 从末端节点向下查找是否有合并行
+      const len = this.data.length
+      prevKey = undefined
+      while (end < len) {
+        const curRow = this.data[end]
+        const curkey = this.rowSpanKey(curRow, end)
+        // 如果不存在key，说明当前行不属于合并行
+        if (!curkey) break
+
+        // 如果当前行与前面一行的key不相同，说明则当前行不属于合并行，从前一行开始截断
+        if (prevKey && prevKey !== curkey) {
+          end--
+          break
+        }
+
+        prevKey = curkey
+        end++
+      }
+
+      return [start, end]
+    },
+
+    // 是否是合并行
+    isRowSpan () {
+      return typeof this.rowSpanKey === 'function'
     },
 
     // 计算位置
