@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:test": "vite -- test",
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist",
@@ -12,6 +13,7 @@
   },
   "dependencies": {
     "el-table-infinite-scroll": "^3.0.1",
+    "el-table-virtual-scroll-next": "^1.0.2",
     "element-plus": "^2.2.29",
     "highlight.js": "^11.7.0",
     "less": "^4.1.3",
