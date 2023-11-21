@@ -55,7 +55,10 @@
           {{getIndex(scope)}}
         </span>
         <template v-else>
-          {{scope.row[scope.column.property]}}
+          <!-- 支持嵌套 -->
+          <slot>
+            {{scope.row[scope.column.property]}}
+          </slot>
         </template>
       </slot>
     </template>

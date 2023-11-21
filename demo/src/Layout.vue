@@ -131,6 +131,10 @@ export default {
         {
           title: '排序',
           path: '/SortDemo'
+        },
+        {
+          title: '表尾合计行',
+          path: '/Summary'
         }
       ]
     }

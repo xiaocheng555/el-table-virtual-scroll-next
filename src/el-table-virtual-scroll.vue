@@ -538,6 +538,13 @@ export default {
     }
   },
   watch: {
+    data () {
+      if (!this.virtualized) {
+        this.renderAllData()
+      } else {
+        this.doUpdate()
+      }
+    },
     'data.length' () {
       if (!this.virtualized) {
         this.renderAllData()

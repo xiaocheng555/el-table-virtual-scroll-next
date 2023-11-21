@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "The virtual scrolling component developed based on the Table component of Element-Plus supports dynamic height and solves the problem of scrolling stuck when the amount of data is large.",
   "main": "dist/el-table-virtual-scroll-next.umd.js",
-  "module": "dist/el-table-virtual-scroll-next.es.js",
+  "module": "dist/el-table-virtual-scroll-next.esm.js",
   "unpkg": "dist/el-table-virtual-scroll-next.min.js",
   "scripts": {
     "build:umd": "rollup --config ./build/rollup.config.umd.js",
